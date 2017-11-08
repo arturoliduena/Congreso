@@ -1,8 +1,12 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { StackNavigator, TabNavigator} from 'react-navigation';
-import index from './index.js'
-import newscreen from './newscreen.js'
+import index from './index.js';
+import home from './Components/home.js';
+import program from './Components/program.js';
+import map from './Components/map.js';
+import settings from './Components/settings.js';
+import network from './Components/network.js'
 
 const HomeScreen = () => (
   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -18,10 +22,19 @@ const DetailsScreen = () => (
 
 const Tab = TabNavigator({
   Home: {
-    screen: index,
+    screen: home,
   },
-  Notifications: {
-    screen: index,
+  Program: {
+    screen: program,
+  },
+  Map: {
+    screen: map
+  },
+  Settings: {
+    screen: settings
+  },
+  Network: {
+    screen: network
   },
 }, {
   tabBarPosition: 'bottom',
@@ -39,9 +52,6 @@ const RootNavigator = StackNavigator({
   Details: {
     screen: index,
   },
-  newscreen: {
-    screen: newscreen
-  }
 });
 
 export default RootNavigator;
