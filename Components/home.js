@@ -1,5 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+
 
 export default class App extends React.Component {
   static navigationOptions = {
@@ -10,6 +12,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <Text>Este es el home!!</Text>
+        <Ionicons name="md-checkmark-circle" size={32} color="green" />
       </View>
     );
   }

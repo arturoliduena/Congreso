@@ -6,23 +6,22 @@ import home from './Components/home.js';
 import program from './Components/program.js';
 import map from './Components/map.js';
 import settings from './Components/settings.js';
-import network from './Components/network.js'
-
-const HomeScreen = () => (
-  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    <Text>Home Screen</Text>
-  </View>
-);
-
-const DetailsScreen = () => (
-  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    <Text>Details Screen</Text>
-  </View>
-);
+import network from './Components/network.js';
+import { Ionicons } from '@expo/vector-icons';
 
 const Tab = TabNavigator({
   Home: {
     screen: home,
+    navigationOptions: {
+      tabBarLabel: 'Home',
+      tabBarIcon: ({ tintColor, focused }) => (
+        <Ionicons
+          name={focused ? 'ios-home' : 'ios-home-outline'}
+          size={26}
+          style={{ color: tintColor }}
+        />
+      ),
+    },
   },
   Program: {
     screen: program,
