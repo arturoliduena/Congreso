@@ -35,53 +35,28 @@ var _network = require('./Components/network.js');
 
 var _network2 = _interopRequireDefault(_network);
 
+var _vectorIcons = require('@expo/vector-icons');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var HomeScreen = function HomeScreen() {
-  return _react2.default.createElement(
-    _reactNative.View,
-    { style: { flex: 1, alignItems: 'center', justifyContent: 'center' }, __source: {
-        fileName: _jsxFileName,
-        lineNumber: 12
-      }
-    },
-    _react2.default.createElement(
-      _reactNative.Text,
-      {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 13
-        }
-      },
-      'Home Screen'
-    )
-  );
-};
-
-var DetailsScreen = function DetailsScreen() {
-  return _react2.default.createElement(
-    _reactNative.View,
-    { style: { flex: 1, alignItems: 'center', justifyContent: 'center' }, __source: {
-        fileName: _jsxFileName,
-        lineNumber: 18
-      }
-    },
-    _react2.default.createElement(
-      _reactNative.Text,
-      {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 19
-        }
-      },
-      'Details Screen'
-    )
-  );
-};
-
 var Tab = (0, _reactNavigation.TabNavigator)({
-  Home: {
-    screen: _home2.default
+  Hola: {
+    screen: _home2.default,
+    navigationOptions: {
+      tabBarIcon: function tabBarIcon(_ref) {
+        var tintColor = _ref.tintColor,
+            focused = _ref.focused;
+        return _react2.default.createElement(_vectorIcons.Ionicons, {
+          name: 'md-home',
+          size: 26,
+          style: { color: tintColor },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 18
+          }
+        });
+      }
+    }
   },
   Program: {
     screen: _program2.default
