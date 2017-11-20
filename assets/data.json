@@ -1,0 +1,134 @@
+{
+	"events":[
+	{
+		"id":1,
+		"title": "Confección de las nuevas guías de tratamiento en  Diabetes tipo 2",
+		"speakers": "Dr. Guillermo Umpiérrez (USA)",
+		"date": "Martes 7 de Noviembre",
+		"time": "9.00 a 10.15",
+		"type": "Diabetes",
+		"room": "Salón Juan Pablo II",
+		"location": {
+			"latitude":-34.568589,
+			"longitude":-58.434902
+		}
+	},
+	{
+		"id":2,
+		"title": "Tratamiento de la diabetes en el paciente nefrópata",
+		"speakers": "Dra. Alicia Elbert",
+		"date": "Martes 7 de Noviembre",
+		"time": "9.00 a 10.15",
+		"type": "Diabetes",
+		"room": "Aula Magna",
+		"location": {
+			"latitude":-34.566327,
+			"longitude":-58.444343
+		} 
+	},
+	{
+		"id":3,
+		"title": "Insulinoterapia en Diabetes 2",
+		"speakers": "Dra. Florencia Aranguren",
+		"date": "Martes 7 de Noviembre",
+		"time": "9.00 a 10.15",
+		"type": "Diabetes",
+		"room": "Auditorio 1",
+		"location": {
+			"latitude":-34.564631,
+			"longitude":-58.464428
+		} 
+	},
+	{
+		"id":4,
+		"title": "Bases racionales del uso de la polipíldora en Cardiología",
+		"speakers": "Dr. Alvaro Sosa Liprandi",
+		"date": "Martes 7 de Noviembre",
+		"time": "10.45 a 12.00 ",
+		"type": "Cardiología",
+		"room": "Salón Juan Pablo II",
+		"location": {
+			"latitude": -34.568024, 
+			"longitude": -58.452583
+		}
+	},
+	{
+		"id":5,
+		"title": "Riesgo Cardiovascular y fármacos esenciales. Factores determinantes de la no adherencia",
+		"speakers": "Dr. Ricardo López Santi",
+		"date": "Martes 7 de Noviembre",
+		"time": "10.45 a 12.00 ",
+		"type": "Cardiología",
+		"room": "Aula Magna",
+		"location": {
+			"latitude": -34.566045, 
+			"longitude": -58.450180
+		}
+	},
+	{
+		"id":6,
+		"title": "Atención integral, continuidad asistencial, papel de los diferentes dispositivos de atención",
+		"speakers": "Dr. Manuel Ollero Baturone (España)",
+		"date": "Martes 7 de Noviembre",
+		"time": "10.45 a 12.00 ",
+		"type": "Cardiología",
+		"room": "Aula Magna",
+		"location": {
+			"latitude": -34.564490, 
+			"longitude": -58.446575
+		}
+	},
+	{
+		"id":7,
+		"title": "Detección temprana de problemas cognitivos",
+		"speakers": "Dr. David Alejandro Yaxcal Chon (Guatemala)",
+		"date": "Martes 7 de Noviembre",
+		"time": "10.45 a 12.00 ",
+		"type": "Cerebro",
+		"room": "Auditorio 1",
+		"location": {
+			"latitude": -34.556432, 
+			"longitude": -58.444858
+		}
+	},
+	{
+		"id":8,
+		"title": "El segundo cerebro: mito o realidad",
+		"speakers": "Dra. María Inés Marulanda (Venezuela)",
+		"date": "Martes 7 de Noviembre",
+		"time": "10.45 a 12.00 ",
+		"type": "Cerebro",
+		"room": "Auditorio 1",
+		"location": {
+			"latitude": -34.566327,
+			"longitude": -58.434730
+		}
+	},
+	{
+		"id":9,
+		"title": "Ictus, Stress y muerte súbita",
+		"speakers": "Prof. Dr. Vladimir Hachinski (Canadá)",
+		"date": "Miércoles 8 de Noviembre",
+		"time": "10.45 a 12.00 ",
+		"type": "Cerebro",
+		"room": "Aula Magna",
+		"location": {
+			"latitude": -34.558411,
+			"longitude": -58.455501
+		}
+	},
+	{
+		"id":10,
+		"title": "Fragilidad cognitiva y enfermedad vascular",
+		"speakers": "Prof. Dr. Manuel Montero Odasso (Canadá)",
+		"date": "Miércoles 8 de Noviembre",
+		"time": "10.45 a 12.00 ",
+		"type": "Cerebro",
+		"room": "Aula Magna",
+		"location": {
+			"latitude": -34.549363,
+			"longitude": -58.453098
+		}
+		}
+	]
+}

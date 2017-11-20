@@ -1,0 +1,183 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react2 = require('react');
+
+var _react3 = _interopRequireDefault(_react2);
+
+var _index = require('./../node_modules/react-transform-hmr/lib/index.js');
+
+var _index2 = _interopRequireDefault(_index);
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class,
+    _temp,
+    _jsxFileName = '/home/valentina/Desktop/Proyectos/Factory/Congreso/Components/singleEvent.js';
+
+var _reactNative = require('react-native');
+
+var _reactNativeMaps = require('react-native-maps');
+
+var _reactNativeMaps2 = _interopRequireDefault(_reactNativeMaps);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _components = {
+  App: {
+    displayName: 'App'
+  }
+};
+
+var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+  filename: '/home/valentina/Desktop/Proyectos/Factory/Congreso/Components/singleEvent.js',
+  components: _components,
+  locals: [module],
+  imports: [_react3.default]
+});
+
+function _wrapComponent(id) {
+  return function (Component) {
+    return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+  };
+}
+
+var App = _wrapComponent('App')((_temp = _class = function (_React$Component) {
+  _inherits(App, _React$Component);
+
+  function App(props) {
+    _classCallCheck(this, App);
+
+    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+    _this.state = {
+      latitude: null,
+      longitude: null,
+      region: {
+        latitude: null,
+        longitude: null,
+        latitudeDelta: null,
+        longitudeDelta: null
+      }
+    };
+    return _this;
+  }
+
+  _createClass(App, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      console.log(this.props.navigation.state.params.latitude);
+      this.setState({
+        latitude: this.props.navigation.state.params.latitude,
+        longitude: this.props.navigation.state.params.longitude,
+        region: {
+          latitude: this.props.navigation.state.params.latitude,
+          longitude: this.props.navigation.state.params.longitude,
+          latitudeDelta: 0.015,
+          longitudeDelta: 0.0121
+        }
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react3.default.createElement(
+        _reactNative.ScrollView,
+        { style: styles.container, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 38
+          }
+        },
+        _react3.default.createElement(
+          _reactNative.Text,
+          { style: styles.title, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 39
+            }
+          },
+          this.props.navigation.state.params.title
+        ),
+        _react3.default.createElement(
+          _reactNative.Text,
+          { style: styles.time, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 40
+            }
+          },
+          this.props.navigation.state.params.time
+        ),
+        _react3.default.createElement(
+          _reactNativeMaps2.default,
+          {
+            style: styles.map,
+            region: this.state.region,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 41
+            }
+          },
+          _react3.default.createElement(
+            _reactNativeMaps.Marker,
+            {
+              coordinate: { latitude: this.state.latitude, longitude: this.state.longitude },
+              title: 'You are here',
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 45
+              }
+            },
+            _react3.default.createElement(_reactNative.View, { style: styles.marker, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 49
+              }
+            })
+          )
+        )
+      );
+    }
+  }]);
+
+  return App;
+}(_react3.default.Component), _class.navigationOptions = {
+  title: 'single'
+}, _temp));
+
+exports.default = App;
+
+
+var styles = _reactNative.StyleSheet.create({
+  container: {
+    flex: 1,
+    top: 5,
+    backgroundColor: '#fff',
+    paddingLeft: 10
+  },
+  title: {
+    fontSize: 30
+  },
+  time: {
+    marginTop: 25,
+    fontSize: 15
+  },
+  map: {
+    height: 200,
+    margin: 40
+  },
+  marker: {
+    height: 25,
+    width: 25,
+    borderWidth: 3,
+    borderColor: "white",
+    borderRadius: 25 / 2,
+    overflow: "hidden",
+    backgroundColor: "rgba(0,122,255,0.8)"
+
+  }
+});
