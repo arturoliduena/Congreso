@@ -18,6 +18,10 @@ var _class,
 
 var _reactNative = require('react-native');
 
+var _reactNativeMaps = require('react-native-maps');
+
+var _reactNativeMaps2 = _interopRequireDefault(_reactNativeMaps);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -51,39 +55,174 @@ var App = _wrapComponent('App')((_temp = _class = function (_React$Component) {
   function App(props) {
     _classCallCheck(this, App);
 
-    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+    _this.state = {
+      latitude: null,
+      longitude: null,
+      region: {
+        latitude: null,
+        longitude: null,
+        latitudeDelta: null,
+        longitudeDelta: null
+      }
+    };
+    return _this;
   }
 
   _createClass(App, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      var properties = this.props.navigation.state.params;
+      this.setState({
+        latitude: properties.latitude,
+        longitude: properties.longitude,
+        region: {
+          latitude: properties.latitude,
+          longitude: properties.longitude,
+          latitudeDelta: 0.015,
+          longitudeDelta: 0.0121
+        }
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
+      var properties = this.props.navigation.state.params;
+      var navigate = this.props.navigation.navigate;
+
+
       return _react3.default.createElement(
-        _reactNative.View,
+        _reactNative.ScrollView,
         { style: styles.container, __source: {
             fileName: _jsxFileName,
-            lineNumber: 14
+            lineNumber: 41
           }
         },
         _react3.default.createElement(
           _reactNative.Text,
-          {
-            __source: {
+          { style: styles.title, __source: {
               fileName: _jsxFileName,
-              lineNumber: 15
+              lineNumber: 42
             }
           },
-          this.props.navigation.state.params.title
+          properties.title
+        ),
+        _react3.default.createElement(
+          _reactNative.Text,
+          { style: styles.time, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 43
+            }
+          },
+          properties.date
+        ),
+        _react3.default.createElement(
+          _reactNative.Text,
+          { style: styles.time, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 44
+            }
+          },
+          properties.time
         ),
         _react3.default.createElement(
           _reactNative.Text,
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 16
+              lineNumber: 45
             }
           },
-          this.props.navigation.state.params.time
-        )
+          'Speakers'
+        ),
+        _react3.default.createElement(
+          _reactNative.View,
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 46
+            }
+          },
+          _react3.default.createElement(_reactNative.Image, {
+            style: styles.photo,
+            source: { uri: properties.photo },
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 47
+            }
+          }),
+          _react3.default.createElement(
+            _reactNative.Text,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 51
+              }
+            },
+            properties.speakers
+          )
+        ),
+        _react3.default.createElement(
+          _reactNative.Text,
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 53
+            }
+          },
+          'Ubicaci\xF3n'
+        ),
+        _react3.default.createElement(
+          _reactNative.TouchableOpacity,
+          { onPress: function onPress() {
+              return navigate('SingleMap', { latitude: _this2.state.latitude, longitude: _this2.state.longitude });
+            }, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 54
+            }
+          },
+          _react3.default.createElement(
+            _reactNativeMaps2.default,
+            {
+              style: styles.map,
+              region: this.state.region,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 56
+              }
+            },
+            _react3.default.createElement(
+              _reactNativeMaps.Marker,
+              {
+                coordinate: { latitude: this.state.latitude, longitude: this.state.longitude, region: this.state.region },
+                title: 'Taking place here',
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 60
+                }
+              },
+              _react3.default.createElement(_reactNative.View, { style: styles.marker, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 64
+                }
+              })
+            )
+          )
+        ),
+        _react3.default.createElement(_reactNative.Button, {
+          onPress: function onPress() {
+            return navigate('Home', {});
+          },
+          title: 'Go home',
+          color: '#841584',
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 68
+          }
+        })
       );
     }
   }]);
@@ -99,8 +238,33 @@ exports.default = App;
 var styles = _reactNative.StyleSheet.create({
   container: {
     flex: 1,
+    top: 5,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
+    paddingLeft: 10
+  },
+  title: {
+    fontSize: 30
+  },
+  time: {
+    marginTop: 25,
+    fontSize: 15
+  },
+  map: {
+    height: 200,
+    margin: 40
+  },
+  photo: {
+    width: 50,
+    height: 50
+  },
+  marker: {
+    height: 25,
+    width: 25,
+    borderWidth: 3,
+    borderColor: "white",
+    borderRadius: 25 / 2,
+    overflow: "hidden",
+    backgroundColor: "rgba(0,122,255,0.8)"
+
   }
 });

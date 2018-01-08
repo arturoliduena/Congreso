@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, View, Text, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, Image, Button, TouchableOpacity, TouchableHighlight } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
+import { MaterialCommunityIcons, MaterialIcons} from '@expo/vector-icons'
 
 export default class App extends React.Component {
   constructor(props){
@@ -17,12 +18,13 @@ export default class App extends React.Component {
   };
 }
   componentWillMount(){
+    const properties = this.props.navigation.state.params
     this.setState({
-      latitude: this.props.navigation.state.params.latitude,
-      longitude: this.props.navigation.state.params.longitude,
+      latitude: properties.latitude,
+      longitude: properties.longitude,
       region: {
-        latitude: this.props.navigation.state.params.latitude,
-        longitude: this.props.navigation.state.params.longitude,
+        latitude: properties.latitude,
+        longitude: properties.longitude,
         latitudeDelta: 0.015,
         longitudeDelta: 0.0121
       }    
@@ -33,23 +35,30 @@ export default class App extends React.Component {
   }
 
   render() {
+    const properties = this.props.navigation.state.params;
+    const { navigate } = this.props.navigation;
+
     return (
       <ScrollView style={styles.container}>
-        <Text style={styles.title}>{this.props.navigation.state.params.title}</Text>
-        <Text style={styles.time}>{this.props.navigation.state.params.time}</Text>
-        <MapView
-          style={styles.map}
-          region={this.state.region}
-        >
-          <Marker
-          coordinate={{latitude: this.state.latitude ,longitude: this.state.longitude}}
-          title='You are here'
-          >
-            <View style= {styles.marker} />
-          </Marker>
+        <Text style={styles.title}>{properties.title}</Text>
+        <Text style={styles.time}>{properties.date}</Text>
+        <Text style={styles.time}>{properties.time}</Text>
+        <Text>Speakers</Text>
+        <View>
+        <Image
+          style={styles.photo}
+          source={{uri: properties.photo}}
+        />
+        <Text>{properties.speakers}</Text>
+        </View>
+        <Text>Ubicación</Text>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() =>
+          navigate('SingleMap', { latitude: this.state.latitude ,longitude: this.state.longitude })}>
+          <Text style={{textAlign: 'center', lineHeight: 50}}>Còmo llegar</Text>
+        </TouchableOpacity>
 
-
-        </MapView>
       </ScrollView>
     );
   }
@@ -73,14 +82,25 @@ const styles = StyleSheet.create({
     height: 200,
     margin: 40
   },
+  photo: {
+    width: 50,
+    height: 50
+  },
   marker:{
     height: 25,
     width: 25,
     borderWidth: 3,
     borderColor: "white",
-    borderRadius: 25 / 2,
+    borderRadius: 50,
     overflow: "hidden",
     backgroundColor: "rgba(0,122,255,0.8)",
-
+  },
+  button:{
+    borderRadius: 50,
+    backgroundColor: "rgba(0,122,255,0.8)",
+    width: 80,
+    height:80,
+    alignItems: 'center',
+    alignSelf: 'center'
   }
 });

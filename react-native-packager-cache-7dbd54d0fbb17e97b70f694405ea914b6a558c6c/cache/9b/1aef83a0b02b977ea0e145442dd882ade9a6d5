@@ -18,6 +18,8 @@ var _class,
 
 var _reactNative = require('react-native');
 
+var _vectorIcons = require('@expo/vector-icons');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -55,13 +57,18 @@ var App = _wrapComponent('App')((_temp = _class = function (_React$Component) {
   }
 
   _createClass(App, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      _reactNative.StatusBar.setHidden(true);
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react3.default.createElement(
         _reactNative.View,
         { style: styles.container, __source: {
             fileName: _jsxFileName,
-            lineNumber: 11
+            lineNumber: 16
           }
         },
         _react3.default.createElement(
@@ -69,11 +76,16 @@ var App = _wrapComponent('App')((_temp = _class = function (_React$Component) {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 12
+              lineNumber: 17
             }
           },
           'Este es el home!!'
-        )
+        ),
+        _react3.default.createElement(_vectorIcons.Ionicons, { name: 'md-checkmark-circle', size: 32, color: 'green', __source: {
+            fileName: _jsxFileName,
+            lineNumber: 18
+          }
+        })
       );
     }
   }]);

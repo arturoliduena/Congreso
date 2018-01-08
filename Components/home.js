@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, StatusBar} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 
@@ -7,6 +7,9 @@ export default class App extends React.Component {
   static navigationOptions = {
     title: 'home',
   }
+  componentDidMount() {
+       StatusBar.setHidden(true);
+    }
 
   render() {
     return (

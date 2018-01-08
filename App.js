@@ -7,7 +7,9 @@ import program from './Components/program.js';
 import map from './Components/map.js';
 import settings from './Components/settings.js';
 import network from './Components/network.js';
-import { Ionicons } from '@expo/vector-icons';
+import single from './Components/singleEvent.js';
+import singleMap from './Components/singleMap.js'
+import { MaterialCommunityIcons, MaterialIcons} from '@expo/vector-icons';
 
 const Tab = TabNavigator({
   Home: {
@@ -15,8 +17,8 @@ const Tab = TabNavigator({
     navigationOptions: {
       tabBarLabel: 'Home',
       tabBarIcon: ({ tintColor, focused }) => (
-        <Ionicons
-          name={focused ? 'ios-home' : 'ios-home-outline'}
+        <MaterialCommunityIcons
+          name={'home'}
           size={26}
           style={{ color: tintColor }}
         />
@@ -25,21 +27,70 @@ const Tab = TabNavigator({
   },
   Program: {
     screen: program,
+    navigationOptions: {
+      tabBarLabel: 'Program',
+      tabBarIcon: ({ tintColor, focused }) => (
+        <MaterialCommunityIcons
+          name={'calendar-blank'}
+          size={26}
+          style={{ color: tintColor }}
+        />
+      ),
+    }
   },
   Map: {
-    screen: map
+    screen: map,
+    navigationOptions: {
+      tabBarLabel: 'Map',
+      tabBarIcon: ({ tintColor, focused }) => (
+        <MaterialCommunityIcons
+          name={'map-marker'}
+          size={26}
+          style={{ color: tintColor }}
+        />
+      ),
+    }
   },
   Settings: {
-    screen: settings
+    screen: settings,
+    navigationOptions: {
+      tabBarLabel: 'Settings',
+      tabBarIcon: ({ tintColor, focused }) => (
+        <MaterialCommunityIcons
+          name={'settings'}
+          size={26}
+          style={{ color: tintColor }}
+        />
+      ),
+    }
   },
   Network: {
-    screen: network
+    screen: network,
+    navigationOptions: {
+      tabBarLabel: 'Network',
+      tabBarIcon: ({ tintColor, focused }) => (
+        <MaterialIcons
+          name={'people'}
+          size={26}
+          style={{ color: tintColor }}
+        />
+      ),
+    }
   },
 }, {
   tabBarPosition: 'bottom',
   animationEnabled: true,
   tabBarOptions: {
-    activeTintColor: '#e91e63',
+    activeTintColor: '#ffffff',
+    showIcon: true,
+    showLabel: false,
+    indicatorStyle: {
+      borderBottomColor: '#ffffff',
+      borderBottomWidth: 2
+    },
+    style:{
+      backgroundColor: '#ff0037'
+    }
   },
 });
 
@@ -51,6 +102,12 @@ const RootNavigator = StackNavigator({
   Details: {
     screen: index,
   },
+  Single: {
+    screen : single
+  },
+  SingleMap: {
+    screen : singleMap
+  }
 });
 
 export default RootNavigator;

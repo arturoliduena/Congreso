@@ -35,71 +35,128 @@ var _network = require('./Components/network.js');
 
 var _network2 = _interopRequireDefault(_network);
 
+var _singleEvent = require('./Components/singleEvent.js');
+
+var _singleEvent2 = _interopRequireDefault(_singleEvent);
+
+var _singleMap = require('./Components/singleMap.js');
+
+var _singleMap2 = _interopRequireDefault(_singleMap);
+
+var _vectorIcons = require('@expo/vector-icons');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var HomeScreen = function HomeScreen() {
-  return _react2.default.createElement(
-    _reactNative.View,
-    { style: { flex: 1, alignItems: 'center', justifyContent: 'center' }, __source: {
-        fileName: _jsxFileName,
-        lineNumber: 12
-      }
-    },
-    _react2.default.createElement(
-      _reactNative.Text,
-      {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 13
-        }
-      },
-      'Home Screen'
-    )
-  );
-};
-
-var DetailsScreen = function DetailsScreen() {
-  return _react2.default.createElement(
-    _reactNative.View,
-    { style: { flex: 1, alignItems: 'center', justifyContent: 'center' }, __source: {
-        fileName: _jsxFileName,
-        lineNumber: 18
-      }
-    },
-    _react2.default.createElement(
-      _reactNative.Text,
-      {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 19
-        }
-      },
-      'Details Screen'
-    )
-  );
-};
 
 var Tab = (0, _reactNavigation.TabNavigator)({
   Home: {
-    screen: _home2.default
+    screen: _home2.default,
+    navigationOptions: {
+      tabBarLabel: 'Home',
+      tabBarIcon: function tabBarIcon(_ref) {
+        var tintColor = _ref.tintColor,
+            focused = _ref.focused;
+        return _react2.default.createElement(_vectorIcons.MaterialCommunityIcons, {
+          name: 'home',
+          size: 26,
+          style: { color: tintColor },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 20
+          }
+        });
+      }
+    }
   },
   Program: {
-    screen: _program2.default
+    screen: _program2.default,
+    navigationOptions: {
+      tabBarLabel: 'Program',
+      tabBarIcon: function tabBarIcon(_ref2) {
+        var tintColor = _ref2.tintColor,
+            focused = _ref2.focused;
+        return _react2.default.createElement(_vectorIcons.MaterialCommunityIcons, {
+          name: 'calendar-blank',
+          size: 26,
+          style: { color: tintColor },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 33
+          }
+        });
+      }
+    }
   },
   Map: {
-    screen: _map2.default
+    screen: _map2.default,
+    navigationOptions: {
+      tabBarLabel: 'Map',
+      tabBarIcon: function tabBarIcon(_ref3) {
+        var tintColor = _ref3.tintColor,
+            focused = _ref3.focused;
+        return _react2.default.createElement(_vectorIcons.MaterialCommunityIcons, {
+          name: 'map-marker',
+          size: 26,
+          style: { color: tintColor },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 46
+          }
+        });
+      }
+    }
   },
   Settings: {
-    screen: _settings2.default
+    screen: _settings2.default,
+    navigationOptions: {
+      tabBarLabel: 'Settings',
+      tabBarIcon: function tabBarIcon(_ref4) {
+        var tintColor = _ref4.tintColor,
+            focused = _ref4.focused;
+        return _react2.default.createElement(_vectorIcons.MaterialCommunityIcons, {
+          name: 'settings',
+          size: 26,
+          style: { color: tintColor },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 59
+          }
+        });
+      }
+    }
   },
   Network: {
-    screen: _network2.default
+    screen: _network2.default,
+    navigationOptions: {
+      tabBarLabel: 'Network',
+      tabBarIcon: function tabBarIcon(_ref5) {
+        var tintColor = _ref5.tintColor,
+            focused = _ref5.focused;
+        return _react2.default.createElement(_vectorIcons.MaterialIcons, {
+          name: 'people',
+          size: 26,
+          style: { color: tintColor },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 72
+          }
+        });
+      }
+    }
   }
 }, {
   tabBarPosition: 'bottom',
   animationEnabled: true,
   tabBarOptions: {
-    activeTintColor: '#e91e63'
+    activeTintColor: '#ffffff',
+    showIcon: true,
+    showLabel: false,
+    indicatorStyle: {
+      borderBottomColor: '#ffffff',
+      borderBottomWidth: 2
+    },
+    style: {
+      backgroundColor: '#ff0037'
+    }
   }
 });
 
@@ -109,6 +166,12 @@ var RootNavigator = (0, _reactNavigation.StackNavigator)({
   },
   Details: {
     screen: _index2.default
+  },
+  Single: {
+    screen: _singleEvent2.default
+  },
+  SingleMap: {
+    screen: _singleMap2.default
   }
 });
 

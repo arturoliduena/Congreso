@@ -19,11 +19,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 exports.default = function (glyphMap, fontName, expoAssetId) {
   var _class, _temp2;
 
-  var expoFontName = _expo.Font.style(fontName, {
-    ignoreWarning: true
-  }).fontFamily;
   var font = _defineProperty({}, fontName, expoAssetId);
-  var RNVIconComponent = (0, _createIconSet2.default)(glyphMap, expoFontName);
+  var RNVIconComponent = (0, _createIconSet2.default)(glyphMap, fontName);
 
   var Icon = _wrapComponent('Icon')((_temp2 = _class = function (_React$Component) {
     _inherits(Icon, _React$Component);
@@ -92,7 +89,7 @@ exports.default = function (glyphMap, fontName, expoAssetId) {
           return _react3.default.createElement(_reactNative.Text, {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 42
+              lineNumber: 39
             }
           });
         }
@@ -104,7 +101,7 @@ exports.default = function (glyphMap, fontName, expoAssetId) {
         }, this.props, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 46
+            lineNumber: 43
           }
         }));
       }

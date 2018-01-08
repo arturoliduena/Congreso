@@ -48,49 +48,117 @@ function _wrapComponent(id) {
 var App = _wrapComponent('App')((_temp = _class = function (_React$Component) {
   _inherits(App, _React$Component);
 
-  function App() {
+  function App(props) {
     _classCallCheck(this, App);
 
-    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+    _this.state = {
+      "events": null
+    };
+    return _this;
   }
 
   _createClass(App, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      console.log("entro a component");
+      var data = require('../assets/data.json');
+      var color = data.events.type === 'Diabetes' ? 'blue' : 'green';
+      this.setState({
+        "events": data.events
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
+      var _state$events = this.state.events,
+          title = _state$events.title,
+          speakers = _state$events.speakers,
+          date = _state$events.date,
+          time = _state$events.time;
+      var navigate = this.props.navigation.navigate;
+
       return _react3.default.createElement(
-        _reactNative.View,
+        _reactNative.ScrollView,
         { style: styles.container, __source: {
             fileName: _jsxFileName,
-            lineNumber: 11
+            lineNumber: 29
           }
         },
-        _react3.default.createElement(
-          _reactNative.Text,
-          {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 12
-            }
-          },
-          'Este es el programa!!'
-        )
+        this.state.events.map(function (i) {
+          return _react3.default.createElement(
+            _reactNative.TouchableOpacity,
+            { key: i.id, style: { height: 120, borderBottomColor: 'black', borderBottomWidth: 3, borderLeftWidth: 20,
+                borderLeftColor: i.type === 'Diabetes' ? '#24b700' : i.type === 'Cardiología' ? '#3e68d1' : '#ffbf00',
+                padding: 8 }, onPress: function onPress() {
+                return navigate('Single', { title: i.title, time: i.time, date: i.date, speakers: i.speakers, latitude: i.location.latitude,
+                  longitude: i.location.longitude, photo: i.photo });
+              }, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 31
+              }
+            },
+            _react3.default.createElement(
+              _reactNative.Text,
+              { style: styles.date, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 36
+                }
+              },
+              i.date
+            ),
+            _react3.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 37
+                }
+              },
+              i.time
+            ),
+            _react3.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 38
+                }
+              },
+              i.title
+            ),
+            _react3.default.createElement(
+              _reactNative.Text,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 39
+                }
+              },
+              i.speakers
+            )
+          );
+        })
       );
     }
   }]);
 
   return App;
 }(_react3.default.Component), _class.navigationOptions = {
+  justifyContent: 'center',
   title: 'program'
 }, _temp));
 
 exports.default = App;
-
+;
 
 var styles = _reactNative.StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
+    flex: 1
+  },
+  date: {
+    fontWeight: 'bold',
+    fontSize: 15
   }
 });

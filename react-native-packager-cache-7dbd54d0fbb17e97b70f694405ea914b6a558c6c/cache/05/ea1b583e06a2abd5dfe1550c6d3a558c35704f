@@ -1,0 +1,11 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _MapViewDirections = require('./src/MapViewDirections');
+
+var _MapViewDirections2 = _interopRequireDefault(_MapViewDirections);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _MapViewDirections2.default;

@@ -1,0 +1,168 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react2 = require('react');
+
+var _react3 = _interopRequireDefault(_react2);
+
+var _index = require('./../node_modules/react-transform-hmr/lib/index.js');
+
+var _index2 = _interopRequireDefault(_index);
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class,
+    _temp,
+    _jsxFileName = '/home/valentina/Desktop/Proyectos/Factory/Congreso/Components/singleMap.js';
+
+var _reactNative = require('react-native');
+
+var _reactNativeMaps = require('react-native-maps');
+
+var _reactNativeMaps2 = _interopRequireDefault(_reactNativeMaps);
+
+var _reactNativeMapsDirections = require('react-native-maps-directions');
+
+var _reactNativeMapsDirections2 = _interopRequireDefault(_reactNativeMapsDirections);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _components = {
+  App: {
+    displayName: 'App'
+  }
+};
+
+var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+  filename: '/home/valentina/Desktop/Proyectos/Factory/Congreso/Components/singleMap.js',
+  components: _components,
+  locals: [module],
+  imports: [_react3.default]
+});
+
+function _wrapComponent(id) {
+  return function (Component) {
+    return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+  };
+}
+
+var App = _wrapComponent('App')((_temp = _class = function (_React$Component) {
+  _inherits(App, _React$Component);
+
+  function App(props) {
+    _classCallCheck(this, App);
+
+    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+  }
+
+  _createClass(App, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      var properties = this.props.navigation.state.params;
+      navigator.geolocation.getCurrentPosition(function (position) {
+        console.log(position.coords.latitude);
+      }).then(function (result) {
+        console.log(result.coords.longitude);
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var origin = { latitude: this.state.originlatitude, longitude: this.state.originlongitude };
+      var destination = { latitude: this.props.navigation.state.params.latitude, longitude: this.props.navigation.state.params.longitude };
+      var GOOGLE_MAPS_APIKEY = 'AIzaSyAmOnV5L2eEy29toZJRDqRahGFIBrxWWg';
+      var properties = this.props.navigation.state.params;
+      return _react3.default.createElement(
+        _reactNativeMaps2.default,
+        {
+          style: styles.container,
+          region: this.state.region,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 30
+          }
+        },
+        _react3.default.createElement(_reactNativeMapsDirections2.default, {
+          origin: origin,
+          destination: destination,
+          apikey: GOOGLE_MAPS_APIKEY,
+          strokeWidth: 3,
+          strokeColor: 'hotpink',
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 34
+          }
+        }),
+        _react3.default.createElement(
+          _reactNativeMaps.Marker,
+          {
+            coordinate: { latitude: properties.latitude, longitude: properties.longitude },
+            title: 'Taking place here',
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 41
+            }
+          },
+          _react3.default.createElement(_reactNative.View, { style: styles.marker, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 45
+            }
+          }),
+          '}'
+        ),
+        _react3.default.createElement(
+          _reactNativeMaps.Marker,
+          {
+            coordinate: { latitude: this.state.originlatitude, longitude: this.state.originlongitude },
+            title: 'You are here',
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 48
+            }
+          },
+          _react3.default.createElement(_reactNative.View, { style: styles.marker, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 52
+            }
+          }),
+          '}'
+        )
+      );
+    }
+  }]);
+
+  return App;
+}(_react3.default.Component), _class.navigationOptions = {
+  title: 'singleMap'
+}, _temp));
+
+exports.default = App;
+
+var styles = _reactNative.StyleSheet.create({
+  container: {
+    flex: 1,
+    top: 5,
+    backgroundColor: '#fff',
+    paddingLeft: 10
+  },
+  marker: {
+    height: 25,
+    width: 25,
+    borderWidth: 3,
+    borderColor: "white",
+    borderRadius: 25 / 2,
+    overflow: "hidden",
+    backgroundColor: "rgba(0,122,255,0.8)"
+
+  },
+  map: {
+    flex: 1
+  }
+});

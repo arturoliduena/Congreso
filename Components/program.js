@@ -16,10 +16,6 @@ export default class App extends React.Component {
         "events":data.events,
       })
   }
-      
-componentDidMount(){
-  console.log(this.state.events[0].title)
-}
 
   static navigationOptions = {
     justifyContent: 'center',
@@ -35,7 +31,8 @@ componentDidMount(){
           <TouchableOpacity key={i.id} style={{height: 120, borderBottomColor: 'black', borderBottomWidth: 3, borderLeftWidth: 20, 
           borderLeftColor: (i.type==='Diabetes') ? '#24b700': (i.type==='Cardiología') ? '#3e68d1': '#ffbf00',
            padding: 8}} onPress={() =>
-          navigate('Single', { title: i.title, time: i.time, speakers: i.speakers, latitude: i.location.latitude, longitude: i.location.longitude })}>
+          navigate('Single', { title: i.title, time: i.time, date: i.date, speakers: i.speakers, latitude: i.location.latitude, 
+          longitude: i.location.longitude, photo: i.photo })}>
           <Text style={styles.date}>{i.date}</Text>
           <Text>{i.time}</Text>
           <Text>{i.title}</Text>

@@ -1,0 +1,230 @@
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react2 = require('react');
+
+var _react3 = _interopRequireDefault(_react2);
+
+var _index = require('./../../react-transform-hmr/lib/index.js');
+
+var _index2 = _interopRequireDefault(_index);
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _jsxFileName = '/home/valentina/Desktop/Proyectos/Factory/Congreso/node_modules/react-native-maps-directions/src/MapViewDirections.js';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactNativeMaps = require('react-native-maps');
+
+var _reactNativeMaps2 = _interopRequireDefault(_reactNativeMaps);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _components = {
+	MapViewDirections: {
+		displayName: 'MapViewDirections'
+	}
+};
+
+var _reactTransformHmrLibIndexJs2 = (0, _index2.default)({
+	filename: '/home/valentina/Desktop/Proyectos/Factory/Congreso/node_modules/react-native-maps-directions/src/MapViewDirections.js',
+	components: _components,
+	locals: [module],
+	imports: [_react3.default]
+});
+
+function _wrapComponent(id) {
+	return function (Component) {
+		return _reactTransformHmrLibIndexJs2(Component, id);
+	};
+}
+
+var MapViewDirections = _wrapComponent('MapViewDirections')(function (_Component) {
+	_inherits(MapViewDirections, _Component);
+
+	function MapViewDirections(props) {
+		_classCallCheck(this, MapViewDirections);
+
+		var _this = _possibleConstructorReturn(this, (MapViewDirections.__proto__ || Object.getPrototypeOf(MapViewDirections)).call(this, props));
+
+		_this.resetState = function () {
+			var cb = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+
+			_this._mounted && _this.setState({
+				coordinates: null,
+				distance: null,
+				duration: null
+			}, cb);
+		};
+
+		_this.fetchAndRenderRoute = function () {
+			var _this$props = _this.props,
+			    origin = _this$props.origin,
+			    destination = _this$props.destination,
+			    apikey = _this$props.apikey,
+			    onReady = _this$props.onReady,
+			    onError = _this$props.onError,
+			    _this$props$mode = _this$props.mode,
+			    mode = _this$props$mode === undefined ? 'driving' : _this$props$mode,
+			    _this$props$language = _this$props.language,
+			    language = _this$props$language === undefined ? 'en' : _this$props$language;
+
+
+			if (origin.latitude && origin.longitude) {
+				origin = origin.latitude + ',' + origin.longitude;
+			}
+
+			if (destination.latitude && destination.longitude) {
+				destination = destination.latitude + ',' + destination.longitude;
+			}
+
+			_this.fetchRoute(origin, destination, apikey, mode, language).then(function (result) {
+				if (!_this._mounted) return;
+				_this.setState(result);
+				onReady && onReady(result);
+			}).catch(function (errorMessage) {
+				_this.resetState();
+				console.warn('MapViewDirections Error: ' + errorMessage);
+				onError && onError(errorMessage);
+			});
+		};
+
+		_this.fetchRoute = function (origin, destination, apikey, mode, language) {
+			var url = 'https://maps.googleapis.com/maps/api/directions/json?origin=' + origin + '&destination=' + destination + '&key=' + apikey + '&mode=' + mode + '&language=' + language;
+
+			return fetch(url).then(function (response) {
+				return response.json();
+			}).then(function (json) {
+
+				if (json.status !== 'OK') {
+					var errorMessage = json.error_message || 'Unknown error';
+					return Promise.reject(errorMessage);
+				}
+
+				if (json.routes.length) {
+
+					var route = json.routes[0];
+
+					return Promise.resolve({
+						distance: route.legs.reduce(function (carry, curr) {
+							return carry + curr.distance.value;
+						}, 0) / 1000,
+						duration: route.legs.reduce(function (carry, curr) {
+							return carry + curr.duration.value;
+						}, 0) / 60,
+						coordinates: _this.decode(route.overview_polyline.points)
+					});
+				} else {
+					return Promise.reject();
+				}
+			});
+		};
+
+		_this.state = {
+			coordinates: null,
+			distance: null,
+			duration: null
+		};
+		return _this;
+	}
+
+	_createClass(MapViewDirections, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			this._mounted = true;
+			this.fetchAndRenderRoute();
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			this._mounted = false;
+		}
+	}, {
+		key: 'componentWillReceiveProps',
+		value: function componentWillReceiveProps(nextProps) {
+			if (nextProps.origin != this.props.origin || nextProps.destination != this.props.destination) {
+				this.resetState(this.fetchAndRenderRoute);
+			}
+		}
+	}, {
+		key: 'decode',
+		value: function decode(t, e) {
+			for (var n, o, u = 0, l = 0, r = 0, d = [], h = 0, i = 0, a = null, c = Math.pow(10, e || 5); u < t.length;) {
+				a = null, h = 0, i = 0;
+				do {
+					a = t.charCodeAt(u++) - 63, i |= (31 & a) << h, h += 5;
+				} while (a >= 32);
+				n = 1 & i ? ~(i >> 1) : i >> 1, h = i = 0;
+				do {
+					a = t.charCodeAt(u++) - 63, i |= (31 & a) << h, h += 5;
+				} while (a >= 32);
+				o = 1 & i ? ~(i >> 1) : i >> 1, l += n, r += o, d.push([l / c, r / c]);
+			}
+
+			return d = d.map(function (t) {
+				return {
+					latitude: t[0],
+					longitude: t[1]
+				};
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			if (!this.state.coordinates) {
+				return null;
+			}
+
+			var _props = this.props,
+			    origin = _props.origin,
+			    destination = _props.destination,
+			    apikey = _props.apikey,
+			    onReady = _props.onReady,
+			    onError = _props.onError,
+			    mode = _props.mode,
+			    language = _props.language,
+			    props = _objectWithoutProperties(_props, ['origin', 'destination', 'apikey', 'onReady', 'onError', 'mode', 'language']);
+
+			return _react3.default.createElement(_reactNativeMaps2.default.Polyline, _extends({ coordinates: this.state.coordinates }, props, {
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 139
+				}
+			}));
+		}
+	}]);
+
+	return MapViewDirections;
+}(_react2.Component));
+
+MapViewDirections.propTypes = {
+	origin: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.shape({
+		latitude: _propTypes2.default.number.isRequired,
+		longitude: _propTypes2.default.number.isRequired
+	})]),
+	destination: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.shape({
+		latitude: _propTypes2.default.number.isRequired,
+		longitude: _propTypes2.default.number.isRequired
+	})]),
+	apikey: _propTypes2.default.string.isRequired,
+	onReady: _propTypes2.default.func,
+	onError: _propTypes2.default.func,
+	mode: _propTypes2.default.oneOf(['driving', 'bicycling', 'transit', 'walking']),
+	language: _propTypes2.default.string
+};
+
+exports.default = MapViewDirections;
