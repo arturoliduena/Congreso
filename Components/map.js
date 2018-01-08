@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator} from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
+import dataSede from '../assets/data'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -52,6 +53,7 @@ export default class App extends React.Component {
   
 
   render() {
+    console.log('dataSede', dataSede)
     if (!this.state.location) 
     return (
         <View style={{flex:1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white'}}>
@@ -73,6 +75,12 @@ export default class App extends React.Component {
             <View style= {styles.marker} />
           </Marker>
 
+          {dataSede.map((sede, i ) =>
+              <Marker key={i}
+              coordinate={{latitude: sede.coordinate.latitude ,longitude: sede.coordinate.longitude}}
+              title={sede.name}
+              />             
+            )}
 
         </MapView>
       </View>
