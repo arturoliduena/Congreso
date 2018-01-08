@@ -7,6 +7,7 @@ import program from './Components/program.js';
 import map from './Components/map.js';
 import settings from './Components/settings.js';
 import network from './Components/network.js';
+import login from './Components/login.js'
 import { Ionicons } from '@expo/vector-icons';
 
 const Tab = TabNavigator({
@@ -45,6 +46,9 @@ const Tab = TabNavigator({
 
 
 const RootNavigator = StackNavigator({
+  Login: {
+    screen: login,
+  },
   Home: {
     screen: Tab,
   },
