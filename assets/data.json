@@ -1,7 +1,10 @@
-[
+{
+	"events":[
 	{
+		"id":1,
 		"title": "Confección de las nuevas guías de tratamiento en  Diabetes tipo 2",
 		"speakers": "Dr. Guillermo Umpiérrez (USA)",
+		"photo": "http://www.hfgip.com/sites/default/files/media/Images/valentin_profile_pic_circular.png",
 		"date": "Martes 7 de Noviembre",
 		"time": "9.00 a 10.15",
 		"type": "Diabetes",
@@ -12,8 +15,10 @@
 		}
 	},
 	{
+		"id":2,
 		"title": "Tratamiento de la diabetes en el paciente nefrópata",
 		"speakers": "Dra. Alicia Elbert",
+		"photo":"https://www.hfgip.com/sites/default/files/media/Images/HFG_staff/nikita_circular_profile_pic.jpg",
 		"date": "Martes 7 de Noviembre",
 		"time": "9.00 a 10.15",
 		"type": "Diabetes",
@@ -24,8 +29,10 @@
 		} 
 	},
 	{
+		"id":3,
 		"title": "Insulinoterapia en Diabetes 2",
 		"speakers": "Dra. Florencia Aranguren",
+		"photo":"https://www.hfgip.com/sites/default/files/media/Images/HFG_staff/nikita_circular_profile_pic.jpg",
 		"date": "Martes 7 de Noviembre",
 		"time": "9.00 a 10.15",
 		"type": "Diabetes",
@@ -36,8 +43,10 @@
 		} 
 	},
 	{
+		"id":4,
 		"title": "Bases racionales del uso de la polipíldora en Cardiología",
 		"speakers": "Dr. Alvaro Sosa Liprandi",
+		"photo": "http://www.hfgip.com/sites/default/files/media/Images/valentin_profile_pic_circular.png",
 		"date": "Martes 7 de Noviembre",
 		"time": "10.45 a 12.00 ",
 		"type": "Cardiología",
@@ -48,8 +57,10 @@
 		}
 	},
 	{
+		"id":5,
 		"title": "Riesgo Cardiovascular y fármacos esenciales. Factores determinantes de la no adherencia",
 		"speakers": "Dr. Ricardo López Santi",
+		"photo": "http://www.hfgip.com/sites/default/files/media/Images/valentin_profile_pic_circular.png",
 		"date": "Martes 7 de Noviembre",
 		"time": "10.45 a 12.00 ",
 		"type": "Cardiología",
@@ -60,8 +71,10 @@
 		}
 	},
 	{
+		"id":6,
 		"title": "Atención integral, continuidad asistencial, papel de los diferentes dispositivos de atención",
 		"speakers": "Dr. Manuel Ollero Baturone (España)",
+		"photo": "http://www.hfgip.com/sites/default/files/media/Images/valentin_profile_pic_circular.png",
 		"date": "Martes 7 de Noviembre",
 		"time": "10.45 a 12.00 ",
 		"type": "Cardiología",
@@ -72,8 +85,10 @@
 		}
 	},
 	{
+		"id":7,
 		"title": "Detección temprana de problemas cognitivos",
 		"speakers": "Dr. David Alejandro Yaxcal Chon (Guatemala)",
+		"photo": "http://www.hfgip.com/sites/default/files/media/Images/valentin_profile_pic_circular.png",
 		"date": "Martes 7 de Noviembre",
 		"time": "10.45 a 12.00 ",
 		"type": "Cerebro",
@@ -84,8 +99,10 @@
 		}
 	},
 	{
+		"id":8,
 		"title": "El segundo cerebro: mito o realidad",
 		"speakers": "Dra. María Inés Marulanda (Venezuela)",
+		"photo": "https://www.hfgip.com/sites/default/files/media/Images/HFG_staff/nikita_circular_profile_pic.jpg",
 		"date": "Martes 7 de Noviembre",
 		"time": "10.45 a 12.00 ",
 		"type": "Cerebro",
@@ -96,8 +113,10 @@
 		}
 	},
 	{
+		"id":9,
 		"title": "Ictus, Stress y muerte súbita",
 		"speakers": "Prof. Dr. Vladimir Hachinski (Canadá)",
+		"photo": "http://www.hfgip.com/sites/default/files/media/Images/valentin_profile_pic_circular.png",
 		"date": "Miércoles 8 de Noviembre",
 		"time": "10.45 a 12.00 ",
 		"type": "Cerebro",
@@ -107,9 +126,11 @@
 			"longitude": -58.455501
 		}
 	},
-		{
+	{
+		"id":10,
 		"title": "Fragilidad cognitiva y enfermedad vascular",
 		"speakers": "Prof. Dr. Manuel Montero Odasso (Canadá)",
+		"photo": "http://www.hfgip.com/sites/default/files/media/Images/valentin_profile_pic_circular.png",
 		"date": "Miércoles 8 de Noviembre",
 		"time": "10.45 a 12.00 ",
 		"type": "Cerebro",
@@ -118,5 +139,6 @@
 			"latitude": -34.549363,
 			"longitude": -58.453098
 		}
-	},
-]
+		}
+	]
+}
